@@ -1,0 +1,14 @@
+{
+  "env": {
+    "node": true
+  },
+  "plugins": ["node"],
+  "rules": {
+    "node/no-missing-require": ["error", {
+      "tryExtensions": [".js"]
+    }]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2021
+  }
+}
