@@ -1,10 +1,13 @@
 const { Router } = require("express");
-const { create, getAll, edit, remove } = require("../controllers/controlador-comments");
+const { create, getAll,editcomments,deletecomment } = require("../controllers/controlador-comments");
 
 const router = Router();
 
 router.get("/", getAll);
 router.post("/", create);
+router.put("/",editcomments);
+router.delete("/",deletecomment);
+
 // editar comentario
 // router.put("", edit);
 

@@ -11,11 +11,11 @@ const commentSchema = new Schema({
     },
     text: {
         type: String,
-        required: true
+        required:true
     },
     date: {
         type: Date,
-        required: true
+        default:Date.now
     }
 });
 
