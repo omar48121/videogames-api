@@ -45,48 +45,50 @@ const getAll = async (req, res) => {
         });
 }
 
-const editcomments = async (req,res)=>{
+const editcomments = async (req, res) => {
 
- let id = req.body
- let consulta ={
-    _id:id
- }
- 
- console.log(consulta);
- console.log(id);
- modeloComments.findOneAndUpdate(consulta,id,{new:true})
- .then((result)=>{
-    return res.status(200).send({
-        message:"Comentario actualizado",
-        status:"ok",
-        result
-    })
- }).catch((e)=>{
-    return res.status(404).send({
-        message:"No se pudo completar la actualizacion de comentario",
-        e
-    })
- })
-}
+    let id = req.body.id;
+    let consulta = {
+        _id: id
+    }
 
-const deletecomment = async(req,res)=>{
-    let consulta ={}
-    let borrar=req.body
     console.log(consulta);
-    console.log(borrar);
-    modeloComments.findOneAndDelete(consulta,borrar,{new:true})
-    .then((resultado)=>{
-        return res.status(200).send({
-            mensaje:"Los datos se eliminaron correctamente",
-            status:"ok",
-            resultado
-        })
-        }).catch((e)=>{
+    console.log(id);
+    modeloComments.findOneAndUpdate(consulta, req.body, { new: true })
+        .then((result) => {
+            return res.status(200).send({
+                message: "Comentario actualizado",
+                status: "ok",
+                result
+            })
+        }).catch((e) => {
             return res.status(404).send({
-                mensaje:"Los datos no se eliminaron",
+                message: "No se pudo completar la actualizacion de comentario",
                 e
             })
-    })
+        })
+}
+
+const deletecomment = async (req, res) => {
+    let borrar = req.body.id;
+    let consulta = {
+        _id: borrar
+    }
+    console.log(consulta);
+    console.log(borrar);
+    modeloComments.findOneAndDelete(consulta)
+        .then((resultado) => {
+            return res.status(200).send({
+                mensaje: "Los datos se eliminaron correctamente",
+                status: "ok",
+                resultado
+            })
+        }).catch((e) => {
+            return res.status(404).send({
+                mensaje: "Los datos no se eliminaron",
+                e
+            })
+        })
 }
 /*
 const edit = async (req, res) => {
