@@ -4,6 +4,7 @@ const cors = require("cors");
 const routerPosts = require("./routes/router-posts");
 const routerUsers = require("./routes/router-users");
 const routerComments = require("./routes/router-comments");
+const routerImages = require("./routes/router-images");
 
 const app = express();
 conexion();
@@ -15,6 +16,7 @@ app.use(cors());
 app.use("/posts", routerPosts);
 app.use("/users", routerUsers);
 app.use("/comments", routerComments);
+app.use("/images", routerImages);
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
