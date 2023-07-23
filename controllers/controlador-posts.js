@@ -32,9 +32,7 @@ const getAll = async (req, res) => {
                 });
             }
 
-            return res.status(200).json({
-                result
-            });
+            return res.status(200).json(result.reverse());
         })
         .catch((err) => {
             return res.status(400).json({
