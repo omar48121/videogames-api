@@ -5,6 +5,7 @@ const routerPosts = require("./routes/router-posts");
 const routerUsers = require("./routes/router-users");
 const routerComments = require("./routes/router-comments");
 const routerImages = require("./routes/router-images");
+const routervideogames = require("./routes/router-videogames");
 
 const app = express();
 conexion();
