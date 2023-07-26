@@ -18,7 +18,7 @@ app.use("/posts", routerPosts);
 app.use("/users", routerUsers);
 app.use("/comments", routerComments);
 app.use("/images", routerImages);
-
+app.use("/videogames", routervideogames);
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
