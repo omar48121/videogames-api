@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = new Schema({
     name: {
@@ -13,6 +14,10 @@ const userSchema = new Schema({
         type: Date,
         required: true
     },
+    likedPosts: [{
+        type: String,
+        ref: 'Post'
+    }],
     email: {
         type: String,
         required: true
