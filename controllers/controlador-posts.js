@@ -44,52 +44,49 @@ const getAll = async (req, res) => {
 }
 
 const edit = async (req, res) => {
-    let consulta = {};
-    consulta[req.params.key] = req.params.value;
-
-    let update = req.body;
-    let opts = { new: true };
-
-    try {
-        let doc = await modeloPost.findOneAndUpdate(consulta, update, opts);
-        doc.save();
-
-        console.log(doc);
-
-        res.status(200).json({
-            mensaje: "actualizado de manera correcta",
-            status: "ok",
-            doc
-        })
-    } catch (error) {
-        res.status(404).json({
-            mensaje: "error al actualizar",
-            error: error.message
-        });
+    let id = req.body.id;
+    let consulta = {
+        _id: id
     }
+
+    console.log(consulta);
+    console.log(id);
+    modeloPost.findOneAndUpdate(consulta, req.body, { new: true })
+        .then((result) => {
+            return res.status(200).send({
+                message: "post actualizado",
+                status: "ok",
+                result
+            })
+        }).catch((e) => {
+            return res.status(404).send({
+                message: "No se pudo completar la actualizacion de post",
+                e
+            })
+        })
 }
 
 const remove = async (req, res) => {
-    let consulta = {};
-    consulta[req.params.key] = req.params.value;
-
-    try {
-        let doc = await modeloPost.findOneAndDelete(consulta);
-        doc.save();
-
-        res.status(200).json({
-            mensaje: "eliminado de manera correcta",
-            status: "ok",
-            doc
-        })
-    } catch (error) {
-        res.status(404).json({
-            mensaje: "error al eliminar",
-            error: error.message
-        });
+    let borrar = req.body.id;
+    let consulta = {
+        _id: borrar
     }
+    console.log(consulta);
+    console.log(borrar);
+    modeloPost.findOneAndDelete(consulta)
+        .then((resultado) => {
+            return res.status(200).send({
+                mensaje: "Los datos se eliminaron correctamente",
+                status: "ok",
+                resultado
+            })
+        }).catch((e) => {
+            return res.status(404).send({
+                mensaje: "Los datos no se eliminaron",
+                e
+            })
+        })
 }
-
 
 module.exports = {
     create,

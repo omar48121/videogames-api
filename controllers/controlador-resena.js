@@ -8,7 +8,7 @@ const create = async (req, res) => {
     post.save()
         .then((result) => {
             return res.status(200).json({
-                message: "reseña creado",
+                message: "reseña creada",
                 status: "success",
                 result
             });
@@ -45,8 +45,7 @@ const getAll = async (req, res) => {
         });
 }
 
-const editresena = async (req, res) => {
-
+const edit = async (req, res) => {
     let id = req.body.id;
     let consulta = {
         _id: id
@@ -57,13 +56,13 @@ const editresena = async (req, res) => {
     modeloresena.findOneAndUpdate(consulta, req.body, { new: true })
         .then((result) => {
             return res.status(200).send({
-                message: "Comentario actualizado",
+                message: "reseña actualizada",
                 status: "ok",
                 result
             })
         }).catch((e) => {
             return res.status(404).send({
-                message: "No se pudo completar la actualizacion de comentario",
+                message: "No se pudo completar la actualizacion de reseña",
                 e
             })
         })
@@ -90,54 +89,6 @@ const deleteresena = async (req, res) => {
             })
         })
 }
-
-const edit = async (req, res) => {
-    let consulta = {};
-    consulta[req.params.key] = req.params.value;
-
-    let update = req.body;
-    let opts = { new: true };
-
-    try {
-        let doc = await modeloresena.findOneAndUpdate(consulta, update, opts);
-        doc.save();
-
-        console.log(doc);
-
-        res.status(200).json({
-            mensaje: "actualizado de manera correcta",
-            status: "ok",
-            doc
-        })
-    } catch (error) {
-        res.status(404).json({
-            mensaje: "error al actualizar",
-            error: error.message
-        });
-    }
-}
-
-const remove = async (req, res) => {
-    let consulta = {};
-    consulta[req.params.key] = req.params.value;
-
-    try {
-        let doc = await modeloresena.findOneAndDelete(consulta);
-        doc.save();
-
-        res.status(200).json({
-            mensaje: "eliminado de manera correcta",
-            status: "ok",
-            doc
-        })
-    } catch (error) {
-        res.status(404).json({
-            mensaje: "error al eliminar",
-            error: error.message
-        });
-    }
-}
-
 
 module.exports = {
     create,
