@@ -17,13 +17,15 @@ const gameSchema = new Schema({
         type: String,
         required: true
     },
-    comments:{
-        type: String,
-        required: false
-    },
+
     date:{
         type: Date,
         default: Date.now
+    },
+    calificacion:{
+        type:Number,
+        required: true,
+
     }
 });
 
