@@ -43,6 +43,21 @@ const getAll = async (req, res) => {
         });
 }
 
+const findByDate = async (req, res) => {
+    try {
+        const postId = req.body.postId;
+        const comments = await modeloComments.find({postId});
+
+        if (!comments) {
+            res.status(201).json([])
+        } else {
+                res.status(200).json(comments);
+        }
+    } catch (error) {
+        res.status(500).json({message: "error del server"});
+    }
+}
+
 const editComment = async (req, res) => {
     let id = req.body.id;
     let consulta = {
@@ -92,5 +107,6 @@ module.exports = {
     create,
     getAll,
     editComment,
-    deleteComment
+    deleteComment,
+    findByDate
 }
