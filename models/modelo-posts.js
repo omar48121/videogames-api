@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const postSchema = new Schema({
+    userFullName: {
+        type: String,
+        required: true
+    },
     userEmail: {
         type: String,
         required: true

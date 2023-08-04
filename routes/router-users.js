@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { getAll, create, authenticateUser, findByEmail } = require("../controllers/controlador-users");
+const { getAll, create, authenticateUser, findByEmail, getFullName } = require("../controllers/controlador-users");
 
 const router = Router();
 
 router.get("/", getAll);
+router.post("/getFullName", getFullName);
 router.post("/register", create);
 router.post("/login", authenticateUser);
 router.post("/search", findByEmail);

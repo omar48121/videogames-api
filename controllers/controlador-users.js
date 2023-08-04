@@ -98,4 +98,19 @@ const findByEmail = async (req, res) => {
     }
 }
 
-module.exports = { getAll, create, authenticateUser, findByEmail };
+const getFullName = async (req, res) => {
+    try {
+        const email = req.body.email;
+        const user = await modeloUser.findOne({email});
+
+        if (!user) {
+            res.status(404).json({message: "usuario no encontrado"})
+        } else {
+            res.status(200).json(user.name + " " + user.lastName);
+        }
+    } catch (error) {
+        res.status(500).json({message: "error del server"});
+    }
+}
+
+module.exports = { getAll, create, authenticateUser, findByEmail, getFullName };

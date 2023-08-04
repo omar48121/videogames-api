@@ -44,9 +44,9 @@ const getAll = async (req, res) => {
 }
 
 const edit = async (req, res) => {
-    let id = req.body.id;
+    let id = req.body.postId;
     let consulta = {
-        _id: id
+        date: id
     }
 
     console.log(consulta);
