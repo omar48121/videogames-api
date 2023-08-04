@@ -11,12 +11,18 @@ const commentSchema = new Schema({
     },
     text: {
         type: String,
-        required:true
+        required: true
     },
     date: {
         type: Date,
-        default:Date.now
+        default: Date.now
     }
+});
+
+commentSchema.pre('save', function (next) {
+    // Restar 6 horas a la fecha actual
+    this.date.setHours(this.date.getHours() - 6);
+    next();
 });
 
 module.exports = model("comment", commentSchema, "comments");

@@ -26,4 +26,10 @@ const postSchema = new Schema({
     }
 });
 
+postSchema.pre('save', function (next) {
+    // Restar 6 horas a la fecha actual
+    this.date.setHours(this.date.getHours() - 6);
+    next();
+});
+
 module.exports = model("post", postSchema, "posts");

@@ -8,6 +8,7 @@ const routerImages = require("./routes/router-images");
 const routervideogames = require("./routes/router-videogames");
 const routerResena = require("./routes/router-resena");
 
+process.env.TZ = 'America/Mexico_City';
 const app = express();
 conexion();
 
