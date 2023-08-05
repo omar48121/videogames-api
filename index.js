@@ -15,6 +15,7 @@ conexion();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
+app.use(express.static('postImages'));
 
 app.use("/posts", routerPosts);
 app.use("/users", routerUsers);

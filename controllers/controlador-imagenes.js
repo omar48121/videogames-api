@@ -1,10 +1,21 @@
-const uploadImage = (req, res) => {
-    // La imagen se ha cargado y almacenado en la carpeta "postImages" del servidor
-    // Puedes acceder a la imagen a través de req.file.path y manejarla como desees (por ejemplo, copiarla a otro directorio, guardar el enlace en una base de datos, etc.).
-    console.log(req.file.path);
-    // Envía una respuesta al cliente (Android) para informar el éxito de la carga
-    res.status(200).json({ message: 'Imagen cargada con éxito' });
-}
+const modeloPost = require('../models/modelo-posts');
 
+const uploadImage = async (req, res) => {
+    try {
+        const postId = req.body.postId;
+        const post = await modeloPost.findOne({ date: postId });
+
+        if (!post) {
+            return res.status(404).json({message: "post no encontrado"})
+        }
+
+        post.imageUrl = "http://localhost:3000/" + req.file.filename;
+        await post.save();
+
+        return res.status(200).json({ message: "imagen cargada" });
+    } catch (error) {
+        return res.status(500).json({message: "error del server"});
+    }
+}
 
 module.exports = { uploadImage };

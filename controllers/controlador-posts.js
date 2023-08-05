@@ -67,12 +67,11 @@ const edit = async (req, res) => {
 }
 
 const remove = async (req, res) => {
-    let borrar = req.body.id;
+    let borrar = req.body.date;
     let consulta = {
-        _id: borrar
+        date: borrar
     }
     console.log(consulta);
-    console.log(borrar);
     modeloPost.findOneAndDelete(consulta)
         .then((resultado) => {
             return res.status(200).send({

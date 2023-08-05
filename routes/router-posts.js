@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", getAll);
 router.post("/", create);
 router.put("/", edit);
-router.delete("/", remove);
+router.post("/remove", remove);
 router.post("/like", increaseCounter);
 router.post("/dislike", decreaseCounter);
 
