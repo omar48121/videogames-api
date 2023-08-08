@@ -7,6 +7,7 @@ const routerComments = require("./routes/router-comments");
 const routerImages = require("./routes/router-images");
 const routervideogames = require("./routes/router-videogames");
 const routerResena = require("./routes/router-resena");
+/*Te permite cargar módulos y archivos en tu aplicación Node.js para que puedas acceder a sus funcionalidades y variables. */
 
 process.env.TZ = 'America/Mexico_City';
 const app = express();
