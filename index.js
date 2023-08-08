@@ -27,3 +27,8 @@ app.use("/resenas",routerResena);
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
+
+
+/*En Node.js, para definir rutas de manejo de solicitudes en una aplicación web. 
+Permite especificar un middleware (en este caso, un router) 
+que se aplicará a las solicitudes que coincidan con la ruta dada. */
