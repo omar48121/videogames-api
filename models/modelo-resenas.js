@@ -1,24 +1,18 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const gameSchema = new Schema({
-    user:{
+const modeloResena = new Schema({
+    userEmail: {
         type: String,
         required: true
     },
-    resena:{
+    gameDate: {
         type: String,
         required: true
     },
-    score:{
+    rating: {
         type: Number,
         required: true
-    },
-    juegoid:{
-        type:String,
-        required:true,
-        
-
     }
 });
 
-module.exports = model("resena", gameSchema,"resenas");
+module.exports = model("resena", modeloResena, "resenas");

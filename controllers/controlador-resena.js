@@ -23,27 +23,31 @@ const create = async (req, res) => {
 }
 
 const getAll = async (req, res) => {
-    modeloresena.find()
+    const { date } = req.query;
+
+    let query = modeloresena.find();
+
+    if (date) {
+        query = query.where({ gameDate: date });
+    }
+
+    query
         .then((result) => {
-            if (!result) {
-                return res.status(202).json({
-                    message: "no hay registros en la base de datos",
-                    status: "ok",
-                });
+            if (!result || result.length === 0) {
+                return res.status(202).json([]);
             }
 
-            return res.status(200).json({
-                result
-            });
+            return res.status(200).json(result);
         })
         .catch((err) => {
             return res.status(400).json({
-                message: "error al mostrar los registros",
+                message: "Error al mostrar los registros",
                 status: "error",
                 err
             });
         });
 }
+
 
 const edit = async (req, res) => {
     let id = req.body.id;
