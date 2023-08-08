@@ -30,3 +30,7 @@ commentSchema.pre('save', function (next) {
 });
 
 module.exports = model("comment", commentSchema, "comments");
+
+
+/*En un proyecto de Node.js, los "models" (modelos) desempeñan un papel fundamental en la arquitectura de la aplicación
+ Los modelos representan la capa de datos de la aplicación y se utilizan para interactuar con la base de datos o cualquier otro origen de datos subyacente.  */
